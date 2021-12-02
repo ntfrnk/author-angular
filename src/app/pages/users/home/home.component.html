@@ -1,0 +1,64 @@
+
+<div class="container mt50 pt30 pb50 mh500">
+
+  <!-- TODO: Agregar clase marT0 a mobile -->
+  <h1 class="f40 marB50">
+  	<a routerLink="/user/new" class="btn btn-success float-right">Nuevo usuario</a>
+  	Usuarios
+    <!-- MOBILE (TODO) -->
+  	<!-- <a href="{{ route('project.new') }}" class="btn btn-success col-12 marT30">Nuevo proyecto</a> -->
+  </h1>
+
+  <!-- Mensajes de respuesta -->
+
+	<div class="none alert alert-success alert-dismissible fade show" role="alert">
+		El usuario se guardó correctamente.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+	<div class="none alert alert-success alert-dismissible fade show" role="alert">
+		El usuario se eliminó correctamente.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+  <div class="row">
+
+    <!-- CARD -->
+    <div *ngFor="let user of users" class="col-12 col-md-4 marB30">
+      <card [id]="user.id"
+            [title]="user.name + ' ' + user.lastname"
+            [data]="user.email"
+            link_edit="user/edit/{{ user.id }}"
+            link_delete="user/delete/{{ user.id }}"
+            text_delete="Si eliminas este usuario se perderán todos sus proyectos y escritos."
+            (confirm)="deleteUser(user.id)">
+      </card>
+    </div>
+
+		<!-- LUEGO DEL ULTIMO REGISTRO -->
+    <div class="col-12 col-md-4 marB30" *ngIf="users != undefined && users.length != 0">
+      <card-new
+        text="¡Sigue creando!"
+        button_link="/user/new"
+        button_text="Agregar un nuevo usuario">
+      </card-new>
+    </div>
+
+    <!-- SI NO HAY REGISTROS -->
+    <div class="col-12 pb100" *ngIf="users != undefined && users.length == 0">
+      <card-empty
+        title="No hay nada por aquí"
+        text="Aún no creaste ningún usuario."
+        link="/user/new"
+        text_link="¿Quieres crear uno ahora?">
+      </card-empty>
+    </div>
+
+  </div>
+
+
+</div>

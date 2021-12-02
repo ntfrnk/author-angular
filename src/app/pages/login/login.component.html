@@ -1,0 +1,36 @@
+
+<div class="py30" style="background-image: url('../assets/images/bg1.jpg'); background-size: cover;">
+
+  <div class="p40 pb80 pt100 container">
+
+    <div class="login-box">
+
+    	<div class="form-group">
+    		<form method="POST" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    			<div class="mb5">
+    				<h1 class="f30 mb0">Iniciar sesión</h1>
+    			</div>
+          <div class="text-danger f14 mt5 mb10" *ngIf="loginError">
+            Los datos ingresados no son correctos.
+          </div>
+    			<div class="form-group">
+    				<label>E-mail:</label>
+    				<input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="user.email" placeholder="Correo electrónico" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            <small *ngIf="!email.valid && email.touched" class="text-danger">Revisa este dato</small>
+    			</div>
+    			<div class="form-group">
+    				<label>Contraseña:</label>
+    				<input type="password" class="form-control" #password="ngModel" [(ngModel)]="user.password" name="password" placeholder="Contraseña" required>
+            <small *ngIf="!password.valid && password.touched" class="text-danger">Revisa este dato</small>
+    			</div>
+    			<div class="form-group">
+    				<button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Ingresar al sistema</button>
+    			</div>
+    		</form>
+    	</div>
+
+    </div>
+
+  </div>
+
+</div>

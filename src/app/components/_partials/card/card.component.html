@@ -1,0 +1,48 @@
+<div class="card shadow">
+  <div class="card-body relative" style="height: 12em;">
+
+    <h4 class="card-title text-muted">
+      <small *ngIf="pretitle">{{ pretitle }}</small>
+      {{ title }}
+    </h4>
+
+    <div *ngIf="data">{{ data }}</div>
+
+    <div *ngIf="words != null && chars != null">
+      Palabras: {{ words }} / Caracteres: {{ chars }}
+    </div>
+
+    <div class="absolute b20 w100 l0 padLR20">
+
+      <div class="f-left" *ngIf="link != null && text_link != null">
+        <!-- <a href="{{ link }}" onclick=""{!! $onclick ?? '' !!} class="btn btn-primary">{{ text_link }}</a> -->
+        <a [routerLink]="'/'+ link" class="btn btn-primary">{{ text_link }}</a>
+      </div>
+
+      <div class="f-right card-buttons">
+
+        <a [routerLink]="link_status" class="btn btn-check text-white" *ngIf="link_status != null">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 20">
+            <path *ngIf="status == 1" d="M8.32 14.18l7.5-7.5-1.172-1.211-6.328 6.328-2.969-2.969-1.172 1.172zM15.82 2.5q0.703 0 1.191 0.488t0.488 1.191v11.641q0 0.703-0.488 1.191t-1.191 0.488h-11.641q-0.703 0-1.191-0.488t-0.488-1.191v-11.641q0-0.703 0.488-1.191t1.191-0.488h11.641z"></path>
+            <path *ngIf="status == 0" d="M15.82 2.5q0.664 0 1.172 0.508t0.508 1.172v11.641q0 0.664-0.508 1.172t-1.172 0.508h-11.641q-0.664 0-1.172-0.508t-0.508-1.172v-11.641q0-0.664 0.508-1.172t1.172-0.508h11.641zM15.82 4.18h-11.641v11.641h11.641v-11.641z"></path>
+          </svg>
+        </a>
+
+        <a [routerLink]="link_edit" class="btn btn-sm btn-info text-white edit mr5" *ngIf="link_edit != null">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+            <path d="M17.266 5.859l-1.523 1.523-3.125-3.125 1.523-1.523q0.234-0.234 0.586-0.234t0.586 0.234l1.953 1.953q0.234 0.234 0.234 0.586t-0.234 0.586zM2.5 14.375l9.219-9.219 3.125 3.125-9.219 9.219h-3.125v-3.125z"></path>
+          </svg>
+        </a>
+
+        <button (click)="confirmDelete()" class="btn btn-sm btn-danger delete" *ngIf="link_delete != null">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+            <path d="M15.82 3.32v1.68h-11.641v-1.68h2.891l0.859-0.82h4.141l0.859 0.82h2.891zM5 15.82v-10h10v10q0 0.664-0.508 1.172t-1.172 0.508h-6.641q-0.664 0-1.172-0.508t-0.508-1.172z"></path>
+          </svg>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

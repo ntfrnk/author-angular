@@ -1,0 +1,30 @@
+// Variables
+
+$headerBG: #FFF;
+$headerText: #555;
+$primario: #01b1d7;
+$primario-dark: #0195B7;
+$negro: #000;
+$blanco: #FFF;
+
+$gris10: rgba(0, 0, 0, 0.1);
+$gris20: rgba(0, 0, 0, 0.2);
+$gris30: rgba(0, 0, 0, 0.3);
+$gris40: rgba(0, 0, 0, 0.4);
+$gris50: rgba(0, 0, 0, 0.5);
+$gris60: rgba(0, 0, 0, 0.6);
+$gris70: rgba(0, 0, 0, 0.7);
+$gris80: rgba(0, 0, 0, 0.8);
+$gris90: rgba(0, 0, 0, 0.9);
+
+// Add general
+@import 'general';
+
+// Add helpers
+@import 'helpers';
+
+// Add components
+@import 'utilities/all.scss';
+
+// Sweet Alert Themes
+@import '~@sweetalert2/themes/bootstrap-4/bootstrap-4.scss';

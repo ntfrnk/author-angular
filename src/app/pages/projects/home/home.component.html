@@ -1,0 +1,67 @@
+<div class="container mt50 pt30 pb50 mh500">
+
+  <!-- TODO: Agregar clase marT0 a mobile -->
+  <h1 class="f40 marB50">
+  	<a routerLink="/project/new" class="btn btn-success float-right">Nuevo proyecto</a>
+  	Mis proyectos literarios
+    <!-- MOBILE (TODO) -->
+  	<!-- <a href="{{ route('project.new') }}" class="btn btn-success col-12 marT30">Nuevo proyecto</a> -->
+  </h1>
+
+  <!-- Mensajes de respuesta -->
+
+	<div class="none alert alert-success alert-dismissible fade show" role="alert">
+		El proyecto se guardó correctamente.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+	<div class="none alert alert-success alert-dismissible fade show" role="alert">
+		El proyecto se eliminó correctamente.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+  <div class="row">
+
+    <!-- CARD -->
+    
+    <div *ngFor="let project of projects" class="col-12 col-md-4 marB30">
+      <card
+        [title]="project.name"
+        [id]="project.id"
+        link="articles/{{ project.id }}"
+        text_link="Gestionar"
+        link_edit="project/edit/{{ project.id }}"
+        link_delete="project/delete/{{ project.id }}"
+        text_delete="Si eliminas este proyecto también se eliminarán todos sus escritos, y no podrás recuperarlos."
+        (confirm)="deleteProject(project.id)">
+      </card>
+    </div>
+
+		<!-- LUEGO DEL ULTIMO REGISTRO -->
+
+    <div class="col-12 col-md-4 marB30" *ngIf="projects != undefined && projects.length != 0">
+      <card-new
+        text="¡Sigue creando!"
+        button_link="/project/new"
+        button_text="Agregar un nuevo proyecto">
+      </card-new>
+    </div>
+
+    <!-- SI NO HAY REGISTROS -->
+
+    <div class="col-12 pb100" *ngIf="projects != undefined && projects.length == 0">
+      <card-empty
+        title="No hay nada por aquí"
+        text="Aún no creaste ningún proyecto."
+        link="/project/new"
+        text_link="¿Quieres crear uno ahora?">
+      </card-empty>
+    </div>
+
+  </div>
+
+</div>

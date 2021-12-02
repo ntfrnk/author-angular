@@ -1,0 +1,42 @@
+<!-- header -->
+<header id="header" class="navbar navbar-expand-lg navbar-dark bg-dark padTB0 fixed-top">
+	<div class="container">
+		<div id="logo">
+			<a routerLink="/">
+				Author <span class="f14">[ Book Manager ]</span>
+			</a>
+		</div>
+
+    <!-- Menu desktop -->
+
+		<nav class="d-none d-md-block" *ngIf="user && user.name">
+			<ul>
+					<li *ngFor="let item of links">
+						<a routerLink="{{item.link}}">
+							<img src="../assets/images/icons/{{item.icon}}"> 
+							{{ item.label }}
+						</a>
+					</li>
+			</ul>
+		</nav>
+
+    <!-- Menu mobile -->
+
+		<div class="float-right d-block d-md-none" *ngIf="user && user.name">
+			<a href="javascript:;" class="btn-menu">
+				<i class="fa fa-bars icon-menu"></i>
+			</a>
+		</div>
+
+	</div>
+
+</header>
+<!-- /header -->
+
+<div class="menu-movil">
+	<ul>
+		<li *ngFor="let item of links">
+			<a routerLink="{{item.link}}"><i class="fa fa-clipboard"></i>{{ item.label }}</a>
+		</li>
+	</ul>
+</div>

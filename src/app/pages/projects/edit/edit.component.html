@@ -1,0 +1,56 @@
+<div class="container mt50 pt30 pb50 mh500">
+
+  <!-- TODO: Agregar clase marT0 a mobile -->
+  <h1 class="f40 marB50">
+  	<a routerLink="/projects/"
+        class="btn btn-light float-right">
+      « Volver al listado
+    </a>
+  	Nuevo proyecto
+  </h1>
+
+  <form method="POST" #editProject="ngForm" (ngSubmit)="updateProject(editProject)">
+    <div class="row">
+      <div class="col-12">
+        <div class="row pb10">
+          <label for="name" class="col-3 lh40">
+            Nombre del proyecto:
+          </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            #name="ngModel"
+            [(ngModel)]="project.name"
+            autocomplete="off"
+            placeholder="Escribe el nombre del proyecto"
+            class="form-control col-6"
+          />
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="row pb20">
+          <label for="description" class="col-3 lh40">
+            Descripción:
+          </label>
+          <textarea
+            name="description"
+            id="description"
+            #name="ngModel"
+            [(ngModel)]="project.description"
+            rows="5"
+            placeholder="Breve descrición del proyecto"
+            class="form-control col-6"></textarea>
+        </div>
+      </div>
+      <div class="col-9 offset-3">
+        <div class="row">
+          <button class="btn btn-primary">Guardar proyecto</button>
+          <a href="#" class="btn btn-link ml10">Cancelar</a>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+</div>

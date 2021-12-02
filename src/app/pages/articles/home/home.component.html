@@ -1,0 +1,68 @@
+<div class="container mt50 pt30 pb50 mh500">
+
+  <!-- TODO: Agregar clase marT0 a mobile -->
+  <h1 class="f40 marB50">
+  	<a routerLink="/article/new/{{ project.id }}" class="btn btn-success float-right">Nuevo escrito</a>
+  	<a routerLink="/projects" class="btn btn-light float-right mr5 text-muted">« Volver a proyectos</a>
+  	{{ project.name }}
+    <!-- MOBILE (TODO) -->
+  	<!-- <a href="{{ route('project.new') }}" class="btn btn-success col-12 marT30">Nuevo proyecto</a> -->
+  </h1>
+
+  <!-- Mensajes de respuesta -->
+
+	<div class="none alert alert-success alert-dismissible fade show" role="alert">
+		El escrito se guardó correctamente.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+	<div class="none alert alert-success alert-dismissible fade show" role="alert">
+		El escrito se eliminó correctamente.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+  <div class="row">
+
+    <!-- CARD -->
+    <div *ngFor="let article of articles" class="col-12 col-md-4 marB30">
+      <card [id]="article.id"
+            [project_id]="article.project_id"
+            [title]="article.title"
+            link="article/read/{{ article.id }}"
+            text_link="Leer"
+            [words]="article.words"
+            [chars]="article.chars"
+            link_edit="article/edit/{{ article.id }}"
+            link_delete="article/delete/{{ article.id }}"
+            text_delete="Si eliminas este escrito ya no podrás recuperarlo."
+            (confirm)="deleteArticle(article.id)">
+      </card>
+    </div>
+
+		<!-- LUEGO DEL ULTIMO REGISTRO -->
+    <div class="col-12 col-md-4 marB30" *ngIf="articles != undefined && articles.length != 0">
+      <card-new
+        text="¡Sigue creando!"
+        button_link="/article/new/{{ project.id }}"
+        button_text="Agregar un nuevo escrito">
+      </card-new>
+    </div>
+
+    <!-- SI NO HAY REGISTROS -->
+    <div class="col-12 pb100" *ngIf="articles != undefined && articles.length == 0">
+      <card-empty
+        title="No hay nada por aquí"
+        text="Aún no creaste ningún escrito."
+        link="/article/new/{{ project.id }}"
+        text_link="¿Quieres crear uno ahora?">
+      </card-empty>
+    </div>
+
+  </div>
+
+
+</div>

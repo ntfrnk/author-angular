@@ -1,0 +1,56 @@
+<div class="container mt50 pt30 pb50 mh500">
+
+  <!-- TODO: Agregar clase marT0 a mobile -->
+  <h1 class="f40 marB50">
+  	<a routerLink="/articles/{{ project_id }}" class="btn btn-light float-right">
+      « Volver al listado
+    </a>
+  	Nuevo escrito
+  </h1>
+
+  <form method="POST" #newArticle="ngForm" (ngSubmit)="saveArticle(newArticle)">
+    <div class="row">
+      <div class="col-12">
+        <div class="row pb10">
+          <label for="name" class="col-3 lh40">
+            Título del escrito:
+          </label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            #title="ngModel"
+            [(ngModel)]="article.title"
+            autocomplete="off"
+            placeholder="Escribe el título del escrito"
+            class="form-control col-6"
+          />
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="row pb20">
+          <label for="description" class="col-3 lh40">
+            Descripción:
+          </label>
+          <textarea
+            name="content"
+            id="content"
+            #content="ngModel"
+            [(ngModel)]="article.content"
+            placeholder="Contenido del escrito"
+            class="form-control col-6"
+            [froalaEditor]="options"
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-9 offset-3">
+        <div class="row">
+          <button class="btn btn-primary">Guardar escrito</button>
+          <a routerLink="/articles/{{ project_id }}" class="btn btn-link ml10">Cancelar</a>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+</div>

@@ -1,0 +1,19 @@
+<div class="container mt50 pt30 pb50 mh500">
+
+  <div class="row justify-content-center">
+    <div class="col-9 shadow border br5">
+      <div class="py40 px20">
+        <h1 class="mb25">
+        	<a *ngIf="article != undefined && article.project_id"
+              [routerLink]="'/articles/' + article.project_id"
+              class="btn btn-light float-right">
+            « Volver al listado
+          </a>
+          {{ article != undefined ? article.title : '' }}
+        </h1>
+        <div [innerHTML]="article != undefined ? article.content : ''" class="f17 lh28 text-muted"></div>
+      </div>
+    </div>
+  </div>
+
+</div>

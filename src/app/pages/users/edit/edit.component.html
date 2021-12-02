@@ -1,0 +1,75 @@
+<div class="container mt50 pt30 pb50 mh500">
+
+  <!-- TODO: Agregar clase marT0 a mobile -->
+  <h1 class="f40 marB50">
+  	<a routerLink="/projects/"
+        class="btn btn-light float-right">
+      « Volver al listado
+    </a>
+  	Nuevo usuario
+  </h1>
+
+  <form method="POST" #editUser="ngForm" (ngSubmit)="updateUser(editUser)">
+    <div class="row">
+      <div class="col-12">
+        <div class="row pb10">
+          <label for="name" class="col-3 lh40">
+            Nombre:
+          </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            #name="ngModel"
+            [(ngModel)]="user.name"
+            autocomplete="off"
+            placeholder="Nombre"
+            class="form-control col-6"
+          />
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="row pb10">
+          <label for="lastname" class="col-3 lh40">
+            Apellido:
+          </label>
+          <input
+            type="text"
+            name="lastname"
+            id="lastname"
+            #lastname="ngModel"
+            [(ngModel)]="user.lastname"
+            autocomplete="off"
+            placeholder="Apellido"
+            class="form-control col-6"
+          />
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="row pb10">
+          <label for="email" class="col-3 lh40">
+            E-mail:
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            #email="ngModel"
+            [(ngModel)]="user.email"
+            autocomplete="off"
+            placeholder="Correo electrónico"
+            class="form-control col-6"
+          />
+        </div>
+      </div>
+      <div class="col-9 offset-3">
+        <div class="row">
+          <button class="btn btn-primary">Guardar cambios</button>
+          <a href="#" class="btn btn-link ml10">Cancelar</a>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+</div>
